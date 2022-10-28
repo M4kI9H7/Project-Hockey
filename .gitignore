@@ -1,0 +1,2 @@
+## Ignore CPython bytefile output
+bin/__pycache__/
