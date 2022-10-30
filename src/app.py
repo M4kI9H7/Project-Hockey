@@ -6,6 +6,7 @@ import Player1
 import Player2
 import Hockey_Puck
 import math
+import time
 
 
 
@@ -13,6 +14,8 @@ def main():
     _SCREEN_WIDTH = 480
     _SCREEN_HEIGHT = 640
 
+
+    
     pygame.init()
     pygame.display.set_caption("Pygame")
     screen = pygame.display.set_mode((_SCREEN_WIDTH, _SCREEN_HEIGHT))
@@ -24,8 +27,12 @@ def main():
     player1 = Player1.Player1(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
     player2 = Player2.Player2(_SCREEN_WIDTH / 2 - 32, 0) #플레이어 생성
     puck = Hockey_Puck.Hockey_Puck(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT / 2 - 32) #퍽 생성
+    text = pygame.font.SysFont("arial", 30, True, False)
+    text_render = 0
+    text_rect = 0
     player1_score = 0
     player2_score = 0
+
 
 
     while True:
@@ -103,9 +110,11 @@ def main():
         
         if (puck.pos[1] < 0 and (puck.pos[0] < 240 + 100 and puck.pos[0] > 240 - 100)):
             player1_score += 1
+            resetField('player1')
 
         if (puck.pos[1] + 64 > _SCREEN_HEIGHT and (puck.pos[0] < 240 + 100 and puck.pos[0] > 240 - 100)):
             player2_score += 1
+            resetField('player2')
             
         #플레이어1, 플레이어2가 화면 가장자리를 벗어나지 못하게 하는 것을 구현해야 함
         if (player1.pos[0] < 0):
@@ -140,6 +149,36 @@ def main():
         screen.blit(puck.image, (puck.pos[0], puck.pos[1]))
         screen.blit(player1.image, (player1.pos[0], player1.pos[1]))
         screen.blit(player2.image, (player2.pos[0], player2.pos[1]))
+        
+        def resetField(winner):
+            if ('player1' == winner):
+                screen.blit(fieldimg, (0,0))
+                screen.blit(puck.image, (puck.pos[0], puck.pos[1]))
+                screen.blit(player1.image, (player1.pos[0], player1.pos[1]))
+                screen.blit(player2.image, (player2.pos[0], player2.pos[1]))
+                text_render = text.render("Player1 Wins!",True,(0,0,0))
+                screen.blit(text_render, (_SCREEN_WIDTH/2 - 100, _SCREEN_HEIGHT/2))
+                text_render = text.render(f"player1: {player1_score} | player2: {player2_score}", True, (0,0,0))
+                screen.blit(text_render, (_SCREEN_WIDTH/2 - 100, _SCREEN_HEIGHT/2 + 30))
+                pygame.display.update()
+            else:
+                screen.blit(fieldimg, (0,0))
+                screen.blit(puck.image, (puck.pos[0], puck.pos[1]))
+                screen.blit(player1.image, (player1.pos[0], player1.pos[1]))
+                screen.blit(player2.image, (player2.pos[0], player2.pos[1]))
+                text_render = text.render("Player2 Wins!",True,(0,0,0))
+                screen.blit(text_render, (_SCREEN_WIDTH/2 - 100, _SCREEN_HEIGHT/2))
+                text_render = text.render(f"player1: {player1_score} | player2: {player2_score}", True, (0,0,0))
+                screen.blit(text_render, (_SCREEN_WIDTH/2 - 100, _SCREEN_HEIGHT/2 + 30))
+                pygame.display.update()
+            pygame.time.wait(1000)
+            player1.pos[0] = _SCREEN_WIDTH / 2 - 32
+            player1.pos[1] = _SCREEN_HEIGHT-64
+            player2.pos[0] = _SCREEN_WIDTH / 2 - 32
+            player2.pos[1] = 0
+            puck.pos[0] = _SCREEN_WIDTH / 2 - 32
+            puck.pos[1] = _SCREEN_HEIGHT / 2 - 32
+            puck.move_vec = (0, 0)
 
         pygame.display.update()
 
