@@ -45,6 +45,7 @@ def main():
         screen.fill((0,0,0)) # 화면을 검정색으로 채움
         
         player1.update() #플레이어와 퍽에 있는 update() 함수 호출, 각각의 Rect라는 Collider 를 각자의 위치에 맞게 업데이트함
+        player2.update()
         puck.update()
         
         
@@ -87,7 +88,8 @@ def main():
         puck.move((puck.move_vec[0] * puck.speed * df ), (puck.move_vec[1] * puck.speed * df ))
         
         screen.blit(puck.image, (puck.pos[0], puck.pos[1]))
-        screen.blit(player.image, (player.pos[0], player.pos[1]))
+        screen.blit(player1.image, (player1.pos[0], player1.pos[1]))
+        screen.blit(player2.image, (player2.pos[0], player2.pos[1]))
         
         pygame.display.update()
 
