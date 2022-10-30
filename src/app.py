@@ -6,16 +6,11 @@ import Player1
 import Player2
 import Hockey_Puck
 import math
-import time
-
-
 
 def main():
     _SCREEN_WIDTH = 480
     _SCREEN_HEIGHT = 640
 
-
-    
     pygame.init()
     pygame.display.set_caption("Pygame")
     screen = pygame.display.set_mode((_SCREEN_WIDTH, _SCREEN_HEIGHT))
@@ -28,12 +23,8 @@ def main():
     player2 = Player2.Player2(_SCREEN_WIDTH / 2 - 32, 0) #플레이어 생성
     puck = Hockey_Puck.Hockey_Puck(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT / 2 - 32) #퍽 생성
     text = pygame.font.SysFont("arial", 30, True, False)
-    text_render = 0
-    text_rect = 0
     player1_score = 0
     player2_score = 0
-
-
 
     while True:
         clock.tick(120) #프레임 120FPS 로 설정
@@ -66,7 +57,7 @@ def main():
             player2.pos[1] -= 1 * df
         
         if key_event[pygame.K_s]:
-            player2.pos[1] += 1 * df    
+            player2.pos[1] += 1 * df
             
             
         screen.fill((0,0,0)) # 화면을 검정색으로 채움
@@ -93,7 +84,7 @@ def main():
             if puck.move_vec[1] > 0: #하키 퍽이 화면 가장자리에서 무한정 이동방향을 반전시키지 않게 확인
                 puck.move_vec[1] *= -1
                 
-        #플레이어와 하키 퍽이 충돌했을 때 로직
+        #1번째 플레이어와 하키 퍽이 충돌했을 때 로직
         if (pygame.sprite.collide_mask(player1, puck)):
             fDistance = math.sqrt(math.pow((player1.pos[0] - puck.pos[0]), 2) + math.pow((player1.pos[1] - puck.pos[1]), 2))
             puck.move_vec = [puck.pos[0] - player1.pos[0], puck.pos[1] - player1.pos[1]]
@@ -106,13 +97,13 @@ def main():
             puck.move_vec = [puck.pos[0] - player2.pos[0], puck.pos[1] - player2.pos[1]]
             puck.move_vec[0] = puck.move_vec[0] / fDistance
             puck.move_vec[1] = puck.move_vec[1] / fDistance
-        #하키 퍽이 각 진영의 골에 도달했을 때 스코어를 올리고 게임 판을 초기화하는 로직을 구현해야 함
         
-        if (puck.pos[1] < 0 and (puck.pos[0] < 240 + 100 and puck.pos[0] > 240 - 100)):
+        #하키 퍽이 각 진영의 골에 도달했을 때 스코어를 올리고 게임 판을 초기화하는 로직을 구현해야 함        
+        if (puck.pos[1] < 0 and (puck.pos[0] + 32 < 240 + 50 and puck.pos[0] + 32 > 240 - 50)):
             player1_score += 1
             resetField('player1')
 
-        if (puck.pos[1] + 64 > _SCREEN_HEIGHT and (puck.pos[0] < 240 + 100 and puck.pos[0] > 240 - 100)):
+        if (puck.pos[1] + 64 > _SCREEN_HEIGHT and (puck.pos[0] + 32 < 240 + 50 and puck.pos[0] + 32> 240 - 50)):
             player2_score += 1
             resetField('player2')
             
