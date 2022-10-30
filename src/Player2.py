@@ -2,7 +2,7 @@ from pygame import sprite
 from pygame.math import Vector2
 import SpriteManager
 
-class Player(sprite.Sprite):
+class Player2(sprite.Sprite):
     def __init__(self, x, y):
         sprite.Sprite.__init__(self)
         self.pos = Vector2(x,y)
