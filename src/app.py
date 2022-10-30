@@ -42,7 +42,7 @@ def main():
         if key_event[pygame.K_DOWN]:
             player1.pos[1] += 1 * df
             
-         key_event = pygame.key.get_pressed() # 눌러진 키를 확인함
+        key_event = pygame.key.get_pressed() # 눌러진 키를 확인함
         if key_event[pygame.K_A]:
             player2.pos[0] -= 1 * df
         
@@ -84,13 +84,17 @@ def main():
         
         #플레이어와 하키 퍽이 충돌했을 때 로직
         if (pygame.sprite.collide_mask(player1, puck)):
-            fDistance = math.sqrt(math.pow((player.pos[0] - puck.pos[0]), 2) + math.pow((player.pos[1] - puck.pos[1]), 2))
-            puck.move_vec = [puck.pos[0] - player.pos[0], puck.pos[1] - player.pos[1]]
+            fDistance = math.sqrt(math.pow((player1.pos[0] - puck.pos[0]), 2) + math.pow((player1.pos[1] - puck.pos[1]), 2))
+            puck.move_vec = [puck.pos[0] - player1.pos[0], puck.pos[1] - player1.pos[1]]
             puck.move_vec[0] = puck.move_vec[0] / fDistance
             puck.move_vec[1] = puck.move_vec[1] / fDistance
             
         #2번째 플레이어와 하키 퍽이 충돌했을 때를 구현해야 함
-        
+        if (pygame.sprite.collide_mask(player2, puck)):
+            fDistance = math.sqrt(math.pow((player2.pos[0] - puck.pos[0]), 2) + math.pow((player2.pos[1] - puck.pos[1]), 2))
+            puck.move_vec = [puck.pos[0] - player2.pos[0], puck.pos[1] - player2.pos[1]]
+            puck.move_vec[0] = puck.move_vec[0] / fDistance
+            puck.move_vec[1] = puck.move_vec[1] / fDistance
         #하키 퍽이 각 진영의 골에 도달했을 때 스코어를 올리고 게임 판을 초기화하는 로직을 구현해야 함
         
         #플레이어1, 플레이어2가 화면 가장자리를 벗어나지 못하게 하는 것을 구현해야 함
