@@ -1,2 +1,2 @@
 ## Ignore CPython bytefile output
-bin/__pycache__/
+src/__pycache__/

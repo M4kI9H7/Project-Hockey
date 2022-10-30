@@ -7,16 +7,10 @@ class Player(sprite.Sprite):
         sprite.Sprite.__init__(self)
         self.pos = Vector2(x,y)
         self.spriteMan = SpriteManager.SpriteManager()
-        self.image =  self.spriteMan.req_image('P_Sprite')
-        self.rect = self.image.get_rect()
-        self.rect.centerx = self.pos[0]
-        self.rect.centery = self.pos[1]
-        self.add()
-        
-    def show_pos(self):
-        print(f'{self.pos[0]}, {self.pos[1]}')
-        
+        self.og_image = self.spriteMan.req_image("P_Sprite")
+        self.image = self.og_image
+        self.rect = self.image.get_rect(center=(self.og_image.get_width()/2, self.og_image.get_height()/2))
+
     def update(self):
         self.rect.centerx = self.pos[0]
         self.rect.centery = self.pos[1]
-        
