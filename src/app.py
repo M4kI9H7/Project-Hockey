@@ -31,16 +31,16 @@ def main():
                 
         key_event = pygame.key.get_pressed() # 눌러진 키를 확인함
         if key_event[pygame.K_LEFT]:
-            player.pos[0] -= 1 * df
+            player1.pos[0] -= 1 * df
         
         if key_event[pygame.K_RIGHT]:
-            player.pos[0] += 1 * df
+            player1.pos[0] += 1 * df
             
         if key_event[pygame.K_UP]:
-            player.pos[1] -= 1 * df
+            player1.pos[1] -= 1 * df
         
         if key_event[pygame.K_DOWN]:
-            player.pos[1] += 1 * df
+            player1.pos[1] += 1 * df
                         
         screen.fill((0,0,0)) # 화면을 검정색으로 채움
         
