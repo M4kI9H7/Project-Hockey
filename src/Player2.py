@@ -7,7 +7,7 @@ class Player2(sprite.Sprite):
         sprite.Sprite.__init__(self)
         self.pos = Vector2(x,y)
         self.spriteMan = SpriteManager.SpriteManager()
-        self.og_image = self.spriteMan.req_image("P_Sprite")
+        self.og_image = self.spriteMan.req_image("O_Sprite")
         self.image = self.og_image
         self.rect = self.image.get_rect(center=(self.og_image.get_width()/2, self.og_image.get_height()/2))
 
