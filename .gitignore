@@ -1,2 +1,3 @@
 ## Ignore CPython bytefile output
 src/__pycache__/
+src/WIP/
