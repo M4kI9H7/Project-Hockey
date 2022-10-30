@@ -9,7 +9,7 @@ class Player2(sprite.Sprite):
         self.spriteMan = SpriteManager.SpriteManager()
         self.og_image = self.spriteMan.req_image("O_Sprite")
         self.image = self.og_image
-        self.rect = self.image.get_rect(center=(self.og_image.get_width()/2, self.og_image.get_height()/2))
+        self.rect = self.image.get_rect()
 
     def update(self):
         self.rect.centerx = self.pos[0]
