@@ -1,10 +1,13 @@
 import pygame
+import sys
+
+execpath = sys.argv[0]
 
 class SpriteManager:
     def __init__(self):
-        self.PLAYER_SPRITE = pygame.image.load("sprite/hockey_paddle.png", "Player Hockey Paddle").convert_alpha()
-        self.OPPONENT_SPRITE = pygame.image.load("sprite/hockey_paddle_opponent.png", "Opponent Hockey Paddle").convert_alpha()
-        self.PUCK_SPRITE = pygame.image.load("sprite/hockey_puck.png", "Hockey Puck").convert_alpha()
+        self.PLAYER_SPRITE = pygame.image.load(execpath + "/../../sprite/hockey_paddle.png", "Player Hockey Paddle").convert_alpha()
+        self.OPPONENT_SPRITE = pygame.image.load(execpath + "/../../sprite/hockey_paddle_opponent.png", "Opponent Hockey Paddle").convert_alpha()
+        self.PUCK_SPRITE = pygame.image.load(execpath + "/../../sprite/hockey_puck.png", "Hockey Puck").convert_alpha()
         
         self.img_list = {'P_Sprite' : self.PLAYER_SPRITE,
                          'O_Sprite' : self.OPPONENT_SPRITE,
