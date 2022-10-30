@@ -1,5 +1,6 @@
 import pygame
 from pygame.math import Vector2
+import SpriteManager
 import sys
 import Player1
 import Player2
@@ -16,6 +17,9 @@ def main():
     pygame.display.set_caption("Pygame")
     screen = pygame.display.set_mode((_SCREEN_WIDTH, _SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+    smgr = SpriteManager.SpriteManager()
+    
+    fieldimg = smgr.req_image("Field_Sprite")
 
     player1 = Player1.Player1(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
     player2 = Player2.Player2(_SCREEN_WIDTH / 2 - 32, 0) #플레이어 생성
@@ -126,11 +130,11 @@ def main():
 
         #하키 퍽의 x,y 위치를 이동방향(x,y) * 속도(1) * 프레임 델타의 값으로 움직임
         puck.move((puck.move_vec[0] * puck.speed * df ), (puck.move_vec[1] * puck.speed * df ))
-        
+        screen.blit(fieldimg, (0,0))
         screen.blit(puck.image, (puck.pos[0], puck.pos[1]))
         screen.blit(player1.image, (player1.pos[0], player1.pos[1]))
         screen.blit(player2.image, (player2.pos[0], player2.pos[1]))
-        
+
         pygame.display.update()
 
 if (__name__ == '__main__'):
