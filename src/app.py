@@ -41,7 +41,21 @@ def main():
         
         if key_event[pygame.K_DOWN]:
             player1.pos[1] += 1 * df
-                        
+            
+         key_event = pygame.key.get_pressed() # 눌러진 키를 확인함
+        if key_event[pygame.K_A]:
+            player2.pos[0] -= 1 * df
+        
+        if key_event[pygame.K_D]:
+            player2.pos[0] += 1 * df
+            
+        if key_event[pygame.K_W]:
+            player2.pos[1] -= 1 * df
+        
+        if key_event[pygame.K_S]:
+            player2.pos[1] += 1 * df    
+            
+            
         screen.fill((0,0,0)) # 화면을 검정색으로 채움
         
         player1.update() #플레이어와 퍽에 있는 update() 함수 호출, 각각의 Rect라는 Collider 를 각자의 위치에 맞게 업데이트함
