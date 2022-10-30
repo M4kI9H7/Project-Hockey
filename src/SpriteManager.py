@@ -14,7 +14,6 @@ class SpriteManager:
                          'Puck_Sprite' : self.PUCK_SPRITE,
                          'Field_Sprite' : self.FIELD
                         }
-        print(self.PUCK_SPRITE.get_size())
 
     def req_image(self, SpriteName : str):
         try:
