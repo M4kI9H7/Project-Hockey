@@ -23,8 +23,7 @@ class Hockey_Puck(sprite.Sprite):
         rel_x, rel_y = mouse_x - self.pos[0], mouse_y - self.pos[1]
         self.angle = (180 / math.pi) * -math.atan2(rel_y, rel_x)
         self.image, self.rect = self.rot_center(self.og_image, self.rect, self.angle)
-        print(self.rect.center)
-
+        
     def rot_center(self, image, rect, angle):
         """rotate an image while keeping its center"""
         rot_image = transform.rotate(image, angle)
