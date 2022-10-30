@@ -118,7 +118,11 @@ def main():
             
         
         #플레이어1, 플레이어2가 각각의 진영을 벗어나지 못하게 하는 것을 구현해야 함
-
+        if (player1.pos[1] < _SCREEN_HEIGHT / 2):
+            player1.pos[1] = _SCREEN_HEIGHT / 2
+            
+        if (player2.pos[1] + 64 > _SCREEN_HEIGHT / 2):
+            player2.pos[1] = _SCREEN_HEIGHT / 2 - 64
 
         #하키 퍽의 x,y 위치를 이동방향(x,y) * 속도(1) * 프레임 델타의 값으로 움직임
         puck.move((puck.move_vec[0] * puck.speed * df ), (puck.move_vec[1] * puck.speed * df ))
