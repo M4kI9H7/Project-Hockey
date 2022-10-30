@@ -17,8 +17,8 @@ def main():
     screen = pygame.display.set_mode((_SCREEN_WIDTH, _SCREEN_HEIGHT))
     clock = pygame.time.Clock()
 
-    player1 = Player1.Player(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
-    player2 = Player2.Player(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
+    player1 = Player1.Player1(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
+    player2 = Player2.Player2(_SCREEN_WIDTH / 2 - 32, 0) #플레이어 생성
     puck = Hockey_Puck.Hockey_Puck(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT / 2 - 32) #퍽 생성
 
 
@@ -43,16 +43,16 @@ def main():
             player1.pos[1] += 1 * df
             
         key_event = pygame.key.get_pressed() # 눌러진 키를 확인함
-        if key_event[pygame.K_A]:
+        if key_event[pygame.K_a]:
             player2.pos[0] -= 1 * df
         
-        if key_event[pygame.K_D]:
+        if key_event[pygame.K_d]:
             player2.pos[0] += 1 * df
             
-        if key_event[pygame.K_W]:
+        if key_event[pygame.K_w]:
             player2.pos[1] -= 1 * df
         
-        if key_event[pygame.K_S]:
+        if key_event[pygame.K_s]:
             player2.pos[1] += 1 * df    
             
             
