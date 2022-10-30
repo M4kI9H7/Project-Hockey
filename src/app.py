@@ -18,7 +18,7 @@ def main():
     clock = pygame.time.Clock()
 
     player1 = Player1.Player(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
-    player2 = Player1.Player(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
+    player2 = Player2.Player(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
     puck = Hockey_Puck.Hockey_Puck(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT / 2 - 32) #퍽 생성
 
 
