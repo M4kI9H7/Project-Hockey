@@ -98,6 +98,24 @@ def main():
         #하키 퍽이 각 진영의 골에 도달했을 때 스코어를 올리고 게임 판을 초기화하는 로직을 구현해야 함
         
         #플레이어1, 플레이어2가 화면 가장자리를 벗어나지 못하게 하는 것을 구현해야 함
+        if (player1.pos[0] < 0):
+            player1.pos[0] = 0
+        if (player1.pos[1] < 0):
+            player1.pos[1] = 0
+        if (player1.pos[0] + 64 > _SCREEN_WIDTH):
+            player1.pos[0] = _SCREEN_WIDTH - 64
+        if (player1.pos[1] + 64 > _SCREEN_HEIGHT):
+            player1.pos[1] = _SCREEN_HEIGHT - 64
+        
+        if (player2.pos[0] < 0):
+            player2.pos[0] = 0
+        if (player2.pos[1] < 0):
+            player2.pos[1] = 0
+        if (player2.pos[0] + 64 > _SCREEN_WIDTH):
+            player2.pos[0] = _SCREEN_WIDTH - 64
+        if (player2.pos[1] + 64 > _SCREEN_HEIGHT):
+            player2.pos[1] = _SCREEN_HEIGHT - 64
+            
         
         #플레이어1, 플레이어2가 각각의 진영을 벗어나지 못하게 하는 것을 구현해야 함
 
