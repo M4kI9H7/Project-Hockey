@@ -1,7 +1,8 @@
 import pygame
 from pygame.math import Vector2
 import sys
-import Player
+import Player1
+import Player2
 import Hockey_Puck
 import math
 
@@ -16,7 +17,8 @@ def main():
     screen = pygame.display.set_mode((_SCREEN_WIDTH, _SCREEN_HEIGHT))
     clock = pygame.time.Clock()
 
-    player = Player.Player(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
+    player1 = Player1.Player(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
+    player2 = Player1.Player(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT-64) #플레이어 생성
     puck = Hockey_Puck.Hockey_Puck(_SCREEN_WIDTH / 2 - 32, _SCREEN_HEIGHT / 2 - 32) #퍽 생성
 
 
@@ -42,7 +44,7 @@ def main():
                         
         screen.fill((0,0,0)) # 화면을 검정색으로 채움
         
-        player.update() #플레이어와 퍽에 있는 update() 함수 호출, 각각의 Rect라는 Collider 를 각자의 위치에 맞게 업데이트함
+        player1.update() #플레이어와 퍽에 있는 update() 함수 호출, 각각의 Rect라는 Collider 를 각자의 위치에 맞게 업데이트함
         puck.update()
         
         
@@ -66,7 +68,7 @@ def main():
         
         
         #플레이어와 하키 퍽이 충돌했을 때 로직
-        if (pygame.sprite.collide_mask(player, puck)):
+        if (pygame.sprite.collide_mask(player1, puck)):
             fDistance = math.sqrt(math.pow((player.pos[0] - puck.pos[0]), 2) + math.pow((player.pos[1] - puck.pos[1]), 2))
             puck.move_vec = [puck.pos[0] - player.pos[0], puck.pos[1] - player.pos[1]]
             puck.move_vec[0] = puck.move_vec[0] / fDistance
